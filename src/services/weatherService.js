@@ -1,10 +1,12 @@
 import {DateTime} from "luxon";
 
-const API_KEY=process.env.WEATHER_API_KEY;
-const BASE_URL=process.env.WEATHER_BASR_URL;
+const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+const BASE_URL = import.meta.env.VITE_WEATHER_URL;
 
 const getWeatherData=(infoType,searchParams)=>{
-    const url=new URL(BASE_URL+infoType)
+    console.log('BASE_URL:', BASE_URL);  // Check if this is correct
+    console.log('infoType:', infoType);   // Check if this is correct
+    const url = new URL(`${BASE_URL}/${infoType}`);
     url.search=new URLSearchParams({...searchParams,appid:API_KEY});
 
     
